@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket DJ</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+<body>
+    <header>
+        <h1>Welcome to Ticket DJ</h1>
+    </header>
+    <main>
+        <body>
+            
+            <form action="/submit" method="post" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <br>
+        
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+        
+                <br>
+        
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required oninput="handlePasswordInput()">
+        
+                <br>
+        
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required oninput="handlePasswordConfirmation()">
+        
+                <br>
+        
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+        
+                <br>
+        
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+        
+                <br>
+        
+                <label for="organization">Organization:</label>
+                <select id="organization" name="organization">
+                    <option value="org1">Organization 1</option>
+                    <option value="org2">Organization 2</option>
+                    <option value="org3">Organization 3</option>
+                    <!-- Add more organizations as needed -->
+                </select>
+        
+                <br>
+        
+                <input type="submit" value="Register">
+            </form>
+            <footer>
+                <p>&copy; 2024 TicketDJ. All rights reserved.</p>
+            </footer>
+        
+            <script>
+                function handlePasswordInput() {
+                    // Replace the password value with asterisks
+                    var passwordInput = document.getElementById('password');
+                    passwordInput.value = '*'.repeat(passwordInput.value.length);
+                }
+        
+                function handlePasswordConfirmation() {
+                    var passwordInput = document.getElementById('password');
+                    var confirmPasswordInput = document.getElementById('confirmPassword');
+                    var password = passwordInput.value;
+                    var confirmPassword = confirmPasswordInput.value;
+        
+                    // Check if the password confirmation matches the password
+                    if (password === confirmPassword) {
+                        confirmPasswordInput.setCustomValidity('');
+                    } else {
+                        confirmPasswordInput.setCustomValidity('Passwords do not match');
+                    }
+                }
+        
+                function validateForm() {
+                    // Additional validation logic can be added here
+                    return true; // Returning true to allow the form submission
+                }
+            </script>
+</body>
+
+</html>
