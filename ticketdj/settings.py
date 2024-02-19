@@ -75,10 +75,17 @@ WSGI_APPLICATION = 'ticketdj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        'NAME': 'HelpdeskProject',
+        'USER': 'CM465Admin@cm465',
+        'PASSWORD': 'CM465Password!',
+        'HOST': 'cm465.database.windows.net',
+        'OPTIONS': {
+            'DRIVER': 'OBDC Driver 17 for SQL Server'
+        }
     }
 }
+
 
 
 # Password validation
