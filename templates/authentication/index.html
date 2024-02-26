@@ -13,6 +13,9 @@
     </header>
     <main>
         <h3>Let's organize.</h3>
+        {% if current_user %}
+            Logged in as: {{current_user}}
+        {% endif %}
         <p>Create and account or login to get started:</p>
         <button><a href="/signup">Create an account</a></button>
         <button><a href="/signin">Login</a></button>
